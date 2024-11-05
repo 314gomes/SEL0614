@@ -81,7 +81,7 @@ L_out7Seg12:
 	MOVLW       111
 	MOVWF       LATD+0 
 	GOTO        L_out7Seg2
-;Projeto_2.c,30 :: 		default:{ latd = 0b00000000; break;} // entrada inválida, apagar display
+;Projeto_2.c,30 :: 		default:{ latd = 0b00000000; break;} // entrada invï¿½lida, apagar display
 L_out7Seg13:
 	CLRF        LATD+0 
 	GOTO        L_out7Seg2
@@ -137,7 +137,7 @@ L_end_out7Seg:
 _INTERRUPCAO_HIGH:
 
 ;Projeto_2.c,35 :: 		void INTERRUPCAO_HIGH() iv 0x0008 ics ICS_AUTO {
-;Projeto_2.c,44 :: 		if(INTCON.TMR0IF == 1)    //Foi o TIMER0 que gerou a interrupção ?
+;Projeto_2.c,44 :: 		if(INTCON.TMR0IF == 1)    //Foi o TIMER0 que gerou a interrupï¿½ï¿½o ?
 	BTFSS       INTCON+0, 2 
 	GOTO        L_INTERRUPCAO_HIGH14
 ;Projeto_2.c,46 :: 		out7Seg(displayNum);
@@ -156,7 +156,7 @@ _INTERRUPCAO_HIGH:
 ;Projeto_2.c,50 :: 		TMR0L = TMR0L_preset;
 	MOVF        _TMR0L_preset+0, 0 
 	MOVWF       TMR0L+0 
-;Projeto_2.c,51 :: 		INTCON.TMR0IF = 0;   //Não esquecer de zerar a Flag
+;Projeto_2.c,51 :: 		INTCON.TMR0IF = 0;   //Nï¿½o esquecer de zerar a Flag
 	BCF         INTCON+0, 2 
 ;Projeto_2.c,52 :: 		}
 	GOTO        L_INTERRUPCAO_HIGH15
@@ -205,17 +205,17 @@ _configInterrupt:
 ;Projeto_2.c,72 :: 		void configInterrupt(){
 ;Projeto_2.c,75 :: 		INTCON.GIE = 1;
 	BSF         INTCON+0, 7 
-;Projeto_2.c,77 :: 		INTCON.TMR0IE = 1;   //Habilita a interrupção individual do TIMER0
+;Projeto_2.c,77 :: 		INTCON.TMR0IE = 1;   //Habilita a interrupï¿½ï¿½o individual do TIMER0
 	BSF         INTCON+0, 5 
-;Projeto_2.c,78 :: 		INTCON.INT0IE = 1; //Habilita a interrupção específica INT0
+;Projeto_2.c,78 :: 		INTCON.INT0IE = 1; //Habilita a interrupï¿½ï¿½o especï¿½fica INT0
 	BSF         INTCON+0, 4 
-;Projeto_2.c,79 :: 		INTCON3.INT1IP = 1; // Interrupcão INT1 em alta prioridade
+;Projeto_2.c,79 :: 		INTCON3.INT1IP = 1; // Interrupcï¿½o INT1 em alta prioridade
 	BSF         INTCON3+0, 6 
-;Projeto_2.c,80 :: 		INTCON3.INT1IE = 1; //Habilita a interrupção específica INT1
+;Projeto_2.c,80 :: 		INTCON3.INT1IE = 1; //Habilita a interrupï¿½ï¿½o especï¿½fica INT1
 	BSF         INTCON3+0, 3 
-;Projeto_2.c,82 :: 		INTCON2.INTEDG0 = 1; //Borda de descida
+;Projeto_2.c,82 :: 		INTCON2.INTEDG0 = 1; //Borda de subida
 	BSF         INTCON2+0, 6 
-;Projeto_2.c,83 :: 		INTCON2.INTEDG1 = 1; //Borda de descida
+;Projeto_2.c,83 :: 		INTCON2.INTEDG1 = 1; //Borda de subida
 	BSF         INTCON2+0, 5 
 ;Projeto_2.c,84 :: 		}
 L_end_configInterrupt:
@@ -228,13 +228,13 @@ _configMCU:
 ;Projeto_2.c,89 :: 		ADCON1 |= 0x0F;
 	MOVLW       15
 	IORWF       ADCON1+0, 1 
-;Projeto_2.c,91 :: 		TRISD = 0;    // PORTD como saída  (usar LED)
+;Projeto_2.c,91 :: 		TRISD = 0;    // PORTD como saï¿½da  (usar LED)
 	CLRF        TRISD+0 
 ;Projeto_2.c,92 :: 		PORTD = 0;    // LED inicialmente OFF
 	CLRF        PORTD+0 
-;Projeto_2.c,94 :: 		TRISA = 0X00;
+;Projeto_2.c,94 :: 		TRISA = 0X00; // PORTA como saida (ligar display)
 	CLRF        TRISA+0 
-;Projeto_2.c,95 :: 		PORTA = 0x0F;
+;Projeto_2.c,95 :: 		PORTA = 0x0F; // PORTA 0, 1, 2 e 3 ligados para ligar o display no kit EasyPic
 	MOVLW       15
 	MOVWF       PORTA+0 
 ;Projeto_2.c,97 :: 		TRISB = 0xFF; // PORTB como entradas

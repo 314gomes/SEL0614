@@ -27,28 +27,28 @@ void out7Seg(unsigned char n)
     case 7:{ latd = 0b00000111; break;}   // 7 no display de 7seg.
     case 8:{ latd = 0b01111111; break;}   // 8 no display de 7seg.
     case 9:{ latd = 0b01101111; break;}   // 9 no display de 7seg.
-    default:{ latd = 0b00000000; break;} // entrada inválida, apagar display
+    default:{ latd = 0b00000000; break;} // entrada invï¿½lida, apagar display
   }
 
 }
 
 void INTERRUPCAO_HIGH() iv 0x0008 ics ICS_AUTO {
-  // vetor de tratamento da interrupção (endereço fixo 0x0008)
+  // vetor de tratamento da interrupï¿½ï¿½o (endereï¿½o fixo 0x0008)
   // Definir em Tools > Interrupt Assistant
-  // HIGH = interrupção de alta prioridade
-  // LOW = interrupção de baixa prioridade (endereço 0x0018)
-  // ics = serviço de acionamento/tratamento da interrupção
+  // HIGH = interrupï¿½ï¿½o de alta prioridade
+  // LOW = interrupï¿½ï¿½o de baixa prioridade (endereï¿½o 0x0018)
+  // ics = serviï¿½o de acionamento/tratamento da interrupï¿½ï¿½o
 
 
   // tratamento - acionar LED
-  if(INTCON.TMR0IF == 1)    //Foi o TIMER0 que gerou a interrupção ?
+  if(INTCON.TMR0IF == 1)    //Foi o TIMER0 que gerou a interrupï¿½ï¿½o ?
   {
     out7Seg(displayNum);
     incrementUntil9(&displayNum);
 
     TMR0H = TMR0H_preset;
     TMR0L = TMR0L_preset;
-    INTCON.TMR0IF = 0;   //Não esquecer de zerar a Flag
+    INTCON.TMR0IF = 0;   //Nï¿½o esquecer de zerar a Flag
   }
 
   else if(INTCON.INT0IF == 1){
@@ -70,17 +70,17 @@ void INTERRUPCAO_HIGH() iv 0x0008 ics ICS_AUTO {
 }
 
 void configInterrupt(){
-  //Configuração Global das interrupções GIE   - chave geral que sinaliza que o
-  //programa usará interrupções
+  //Configuraï¿½ï¿½o Global das interrupï¿½ï¿½es GIE   - chave geral que sinaliza que o
+  //programa usarï¿½ interrupï¿½ï¿½es
   INTCON.GIE = 1;
 
-  INTCON.TMR0IE = 1;   //Habilita a interrupção individual do TIMER0
-  INTCON.INT0IE = 1; //Habilita a interrupção específica INT0
-  INTCON3.INT1IP = 1; // Interrupcão INT1 em alta prioridade
-  INTCON3.INT1IE = 1; //Habilita a interrupção específica INT1
+  INTCON.TMR0IE = 1;   //Habilita a interrupï¿½ï¿½o individual do TIMER0
+  INTCON.INT0IE = 1; //Habilita a interrupï¿½ï¿½o especï¿½fica INT0
+  INTCON3.INT1IP = 1; // Interrupcï¿½o INT1 em alta prioridade
+  INTCON3.INT1IE = 1; //Habilita a interrupï¿½ï¿½o especï¿½fica INT1
 
-  INTCON2.INTEDG0 = 1; //Borda de descida
-  INTCON2.INTEDG1 = 1; //Borda de descida
+  INTCON2.INTEDG0 = 1; //Borda de subida
+  INTCON2.INTEDG1 = 1; //Borda de subida
 }
 
 void configMCU()
@@ -88,7 +88,7 @@ void configMCU()
   // Configurando os pinos como digitais
   ADCON1 |= 0x0F;
   // Config. das portas
-  TRISD = 0;    // PORTD como saída  (usar LED)
+  TRISD = 0;    // PORTD como saï¿½da  (usar LED)
   PORTD = 0;    // LED inicialmente OFF
   
   TRISA = 0X00; // PORTA como saida (ligar display)
@@ -112,7 +112,7 @@ void configTimer(){
 }
 
 void main() {
-  // Configuração inicial do MCU
+  // Configuraï¿½ï¿½o inicial do MCU
   configMCU();
   configTIMER();
   configInterrupt();
