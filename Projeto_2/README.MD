@@ -34,7 +34,7 @@ O projeto utiliza o Timer0 com interrupções para controlar a temporização do
 O código configura as portas de I/O, inicializa o Timer0 e habilita as interrupções.
 
 ### Lógica de Interrupção
-A função de interrupção `void __interrupt()` gerencia a atualização do display e ajusta as contagens, reiniciando o Timer0 com os valores apropriados para o próximo ciclo.
+A função de interrupção `void INTERRUPCAO_HIGH() iv 0x0008 ics ICS_AUTO` gerencia a atualização do display e ajusta as contagens, reiniciando o Timer0 com os valores apropriados para o próximo ciclo.
 
 ### Funções Utilizadas
 - **incrementUntil9(unsigned char *n)**: Incrementa o valor do ponteiro `n` até 9 e volta a 0.
