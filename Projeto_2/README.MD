@@ -42,7 +42,7 @@ A função de interrupção `void __interrupt()` gerencia a atualização do dis
 - **configInterrupt()**: Configura as interrupções globais e específicas do Timer0 e dos botões.
 - **configMCU()**: Configura as portas como entrada ou saída, e inicializa o estado inicial do display e das portas.
 - **configTimer()**: Configura o Timer0 para operar em modo de 16 bits com prescaler e valores predefinidos para contar com a precisão desejada.
-
+- **INTERRUPCAO_HIGH()**: Função de tratamento de interrupções de alta prioridade. Verifica se a interrupção foi gerada pelo Timer0 ou pelos botões RB0 (INT0) e RB1 (INT1). Executa as ações necessárias, como atualizar o display e ajustar os valores predefinidos do Timer0, e zera as flags de interrupção correspondentes para permitir novas interrupções.
 
 ## Considerações Importantes
 - **Clock**: O microcontrolador é configurado com um cristal externo HS de 8 MHz.
