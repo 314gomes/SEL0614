@@ -51,8 +51,10 @@ A função de interrupção `void __interrupt()` gerencia a atualização do dis
 
 ## Procedimentos de Teste
 1. **Desenvolvimento e Compilação**: Escrever e compilar o código em **MikroC PRO for PIC**.
-2. **Simulação**: Montar o circuito no **SimulIDE** e carregar o arquivo `.hex` para teste.
+2. **Simulação**: Montar o circuito no **SimulIDE** (segundo a foto a seguir) e carregar o arquivo `.hex` para teste.
 3. **Implementação Prática**: Implementar o projeto no **EasyPIC v7** após testes bem-sucedidos.
+
+![Diagrama do Circuito no SimulIDE](circuito_simulide.jpeg)
 
 ## Recursos Utilizados
 - **Botões**: Conectados nas portas RB0 e RB1 para iniciar e mudar a base de tempo da contagem.
