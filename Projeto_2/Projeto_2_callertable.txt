@@ -1,0 +1,8 @@
+main
+	__CC2DW
+	configMCU
+	configTimer
+	configInterrupt
+INTERRUPCAO_HIGH
+	out7Seg
+	incrementUntil9
