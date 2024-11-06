@@ -61,5 +61,25 @@ A função de interrupção `void INTERRUPCAO_HIGH() iv 0x0008 ics ICS_AUTO` ger
 - **Display de 7 segmentos**: Conectado à Porta D para exibir a contagem.
 - **Temporizador TMR0**: Configurado para interrupções periódicas.
 
+## Discussão dos Conceitos e Comparação com o Projeto Anterior
+
+Neste projeto, implementamos um cronômetro digital utilizando o microcontrolador PIC18F4550 em linguagem C. Os principais conceitos abordados incluem a configuração de timers, interrupções e acionamento de um display de 7 segmentos. O Timer0 é usado para controlar a temporização do cronômetro e gerar intervalos específicos para a contagem, que varia de acordo com o botão pressionado: ao pressionar RB0, o cronômetro conta com intervalo de 1 segundo, e ao pressionar RB1, o intervalo é reduzido para 0,25 segundos. A interrupção do Timer0 ocorre a cada overflow, e uma função de interrupção de alta prioridade trata as operações de atualização do display e reinício da contagem, conforme os valores predefinidos.
+
+### Comparação com o Projeto Anterior (8051 em Assembly)
+Em relação ao projeto anterior, que utilizava o microcontrolador 8051 programado em Assembly, a implementação atual oferece vantagens significativas. A linguagem C permite uma escrita de código mais clara e organizada, com maior modularização e facilidade de manutenção. Diferente do Assembly, onde o controle detalhado do hardware é manual e pode gerar um código complexo e propenso a erros, o uso de C facilita o desenvolvimento e depuração. Além disso, o PIC18F4550, com sua arquitetura RISC, é mais rápido e eficiente para este tipo de aplicação em comparação com o 8051, que utiliza arquitetura CISC.
+
+### Vantagens e Desvantagens da Linguagem C e do PIC18F4550
+- **Vantagens**:
+  - **Legibilidade**: O código em C é mais fácil de entender e manter.
+  - **Modularização**: Funções em C permitem uma separação clara de responsabilidades, o que facilita futuras modificações.
+  - **Eficiência de Desenvolvimento**: A linguagem de alto nível reduz o tempo necessário para o desenvolvimento e permite maior foco na lógica da aplicação.
+  - **Desempenho**: O PIC18F4550, com arquitetura RISC, executa instruções de forma mais eficiente em comparação ao 8051.
+  
+- **Desvantagens**:
+  - **Uso de Recursos**: Em situações de recursos extremamente limitados, o Assembly permite uma otimização mais granular, potencialmente resultando em menor uso de memória e ciclos de CPU.
+  - **Controle Menos Direto**: Em C, o controle detalhado de registradores e periféricos pode ser menos direto do que em Assembly, onde cada operação de hardware é especificada explicitamente.
+
+Em conclusão, o uso de C no PIC18F4550 proporciona um desenvolvimento mais acessível e produtivo, adequado para aplicações que requerem balanceamento entre desempenho e facilidade de manutenção. No entanto, em aplicações altamente críticas, onde recursos são uma restrição significativa, o Assembly ainda pode ser a melhor escolha.
+
 ## Notas Finais
 Este projeto permite explorar as diferenças entre a implementação em C e Assembly, além de comparar as arquiteturas CISC e RISC em microcontroladores de 8 bits.
